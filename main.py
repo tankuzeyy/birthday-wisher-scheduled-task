@@ -1,6 +1,6 @@
 import smtplib, os, datetime as dt, pandas as pd, random
 MY_EMAIL = os.environ.get("MY_EMAIL")
-PASSWORD = os.environ.get("MY_PASSWORD")
+MY_PASSWORD = os.environ.get("MY_PASSWORD")
 
 now = dt.datetime.now()
 today = (now.month, now.day)
@@ -19,6 +19,6 @@ for birthday in birthdays:
             connection.ehlo()
             connection.starttls()
             connection.ehlo()
-            connection.login(user=MY_EMAIL, password=PASSWORD)
+            connection.login(user=MY_EMAIL, password=MY_PASSWORD)
             connection.sendmail(to_addrs=birthday["email"], from_addr=MY_EMAIL, msg=f"Subject:Happy birthday!\n\n{letter}")
             connection.close()
